@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
             for (const [name, url] of Object.entries(data.links)) {
-                console.log(name, url);
                 const link = document.createElement('a');
                 link.href = url;
                 link.target = '_blank';
