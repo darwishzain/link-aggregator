@@ -1,0 +1,18 @@
+{
+    "name": "Sample Link Aggregator Page",
+    "username": "username123",
+    "icon": "",
+    "backgroundcolor": "linear-gradient(135deg, #f3f4f6 0%, #f0f0f0 100%)",
+    "links": {
+        "Main Website": "https://www.example.com",
+        "Blog": "https://blog.example.com",
+        "Newsletter": "https://newsletter.example.com"
+    },
+    "socials": {
+        "facebook": "https://www.facebook.com/yourpage",
+        "twitter": "https://twitter.com/yourhandle",
+        "instagram": "https://www.instagram.com/yourprofile",
+        "youtube": "https://www.youtube.com/yourchannel",
+        "tiktok": "https://www.tiktok.com/@yourhandle"
+    }
+}
