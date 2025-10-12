@@ -1,18 +1,27 @@
 {
-    "name": "Sample Link Aggregator Page",
-    "username": "username123",
-    "icon": "",
-    "backgroundcolor": "linear-gradient(135deg, #f3f4f6 0%, #f0f0f0 100%)",
+    "name": "Your Full Name",
+    "username": "yourusername",
+    "icon": "assets/default-logo.png",
+    "backgroundcolor": "linear-gradient(180deg, #000000 0%, #333333 100%)",
     "links": {
-        "Main Website": "https://www.example.com",
-        "Blog": "https://blog.example.com",
-        "Newsletter": "https://newsletter.example.com"
+        "unique-link-key-1": {
+        "name": "Link Display Name",
+        "img": "assets/default-logo.png",
+        "url": "https://example.com"
+        },
+        "unique-link-key-2": {
+        "name": "Another Link",
+        "icon": "assets/default-logo.png",
+        "url": "https://another-link.com"
+        },
+        "unique-link-key-3": {
+        "name": "Simple Link (No Image)",
+        "url": "https://simplelink.com"
+        }
     },
     "socials": {
-        "facebook": "https://www.facebook.com/yourpage",
-        "twitter": "https://twitter.com/yourhandle",
-        "instagram": "https://www.instagram.com/yourprofile",
-        "youtube": "https://www.youtube.com/yourchannel",
-        "tiktok": "https://www.tiktok.com/@yourhandle"
+        "PlatformName1": "https://platform1.com/yourusername",
+        "PlatformName2": "https://platform2.com/yourusername",
+        "PlatformName3": "https://platform3.com/yourusername"
     }
 }
