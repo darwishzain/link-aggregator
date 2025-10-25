@@ -2,6 +2,9 @@
     "name": "Your Full Name",
     "username": "yourusername",
     "icon": "assets/default-logo.png",
+    "bio":"",
+    "profile":"",
+    "theme":"light",
     "backgroundcolor": "linear-gradient(180deg, #000000 0%, #333333 100%)",
     "links": {
         "unique-link-key-1": {
