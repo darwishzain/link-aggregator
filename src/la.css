@@ -1,99 +1,143 @@
-/* Common base */
-.la-btn {
-    display: inline-block;
-    margin: 0.3rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s, color 0.3s;
+#profile img{
+  width: clamp(60px, 15vw, 120px); /* scales with screen */
+  aspect-ratio: 1 / 1;             /* keeps it square */
+  border-radius: 50%;              /* circular */
+  object-fit: cover;               /* crops image nicely */
+  border: 2px solid #ccc;          /* soft border */
+  background-color: #F0F0F0;
+  margin-bottom: 6px;              /* space before username */
+  transition: all 0.3s ease;       /* smooth hover effect */
 }
-
-/* ===========================
-   LIGHT THEME
-   =========================== */
-.la-light {
-  background-color: #ffffff;
-  color: #222222;
+#profile img:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
-/* --- Buttons (darker shade) --- */
-.la-light .la-btn {
-  background-color: #1a1a1a;  /* very dark gray */
-  color: #ffffff;
-  border-radius: 6px;
+#profile .bio{
+  width: 50%;
+  margin:auto;
+}
+#socials {
+  display: flex;
+  flex-wrap: wrap;          /* allow wrapping if many buttons */
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically (optional) */
+  gap: 0.5rem;              /* space between buttons */
+  margin-top: 1rem;
+}
+#socials a{
+  display: inline-block;
+  margin: 0.3rem;
   padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
   font-weight: 600;
-  text-decoration: none;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s, color 0.3s;
 }
-
-.la-light .la-btn:hover {
-  background-color: #2b2b2b;  /* slightly lighter dark */
-  transform: translateY(-2px);
-}
-
-/* --- Eyecatcher Links (softer dark shade) --- */
-.la-light .links {
-  background-color: #2f2f2f;  /* softer graphite gray */
-  color: #ffffff;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 700px;
+#links a{
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 1rem 1.5rem;
+  width: 80%;
+  max-width: 700px;          /* optional cap on desktop */
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1rem;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.la-light .links:hover {
-  background-color: #3a3a3a;  /* just a touch lighter */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+#links a:hover{
   transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/**DARK*/
+.bg-dark {
+  background-color: #555; /* background */
 }
 
-
-/* ===========================
-   DARK THEME
-   =========================== */
 .la-dark {
-  background-color: #121212;
-  color: #eeeeee;
+  color: #FAFAFA; /* general font color */
 }
 
-/* --- Buttons (lighter shade) --- */
-.la-dark .la-btn {
-  background-color: #f2f2f2;  /* bright light-gray button */
-  color: #111111;
-  border-radius: 6px;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.3s, transform 0.2s;
+.la-dark .la-social {
+  color: #FAFAFA;
+  background-color: transparent; /* no fill, just color contrast */
 }
 
-.la-dark .la-btn:hover {
-  background-color: #e4e4e4;  /* slightly dimmer on hover */
-  transform: translateY(-2px);
+.la-dark .la-link {
+  background-color: #FAFAFA;
+  color: #555; /* contrast to dark background */
+}
+/**LIGHT*/
+.bg-light {
+  background-color: #FAFAFA;
 }
 
-/* --- Eyecatcher Links (softer light shade) --- */
-.la-dark .links {
-  background-color: #d5d5d5;  /* gentle gray, less bright than btn */
-  color: #111111;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  padding: 1rem 1.5rem;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+.la-light {
+  color: #333;
 }
 
-.la-dark .links:hover {
-  background-color: #c9c9c9;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
-  transform: translateY(-3px);
+.la-light .la-social {
+  color: #333;
+  background-color: transparent;
+}
+
+.la-light .la-link {
+  background-color: #333;
+  color: #FAFAFA;
+}
+/**BLUE*/
+.bg-blue {
+  background-color: #1E3A8A; /* deep navy */
+}
+
+.la-blue {
+  color: #E0F2FE; /* soft icy blue text */
+}
+
+.la-blue .la-social {
+  color: #E0F2FE;
+  background-color: transparent;
+}
+
+.la-blue .la-link {
+  background-color: #E0F2FE;
+  color: #1E3A8A;
+}
+/**GREEN*/
+.bg-green {
+  background-color: #14532D; /* deep forest green */
+}
+
+.la-green {
+  color: #DCFCE7; /* soft pale green */
+}
+
+.la-green .la-social {
+  color: #DCFCE7;
+  background-color: transparent;
+}
+
+.la-green .la-link {
+  background-color: #DCFCE7;
+  color: #14532D;
+}
+/**AMBER*/
+.bg-amber {
+  background-color: #92400E; /* warm dark amber */
+}
+
+.la-amber {
+  color: #FEF3C7; /* pale golden text */
+}
+
+.la-amber .la-social {
+  color: #FEF3C7;
+  background-color: transparent;
+}
+
+.la-amber .la-link {
+  background-color: #FEF3C7;
+  color: #92400E;
 }
