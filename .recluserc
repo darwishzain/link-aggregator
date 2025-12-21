@@ -1,0 +1,7 @@
+{
+	"title":"Link Aggregator",
+	"name":"link-aggregator",
+	"run":{
+		"code":"code ~/Projects/link-aggregator"
+	}
+}
