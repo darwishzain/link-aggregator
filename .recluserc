@@ -1,5 +1,6 @@
 {
 	"title":"Link Aggregator",
+	"label":"Aggregator",
 	"name":"link-aggregator",
 	"run":{
 		"code":"code ~/Projects/link-aggregator"
