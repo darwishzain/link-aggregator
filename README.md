@@ -1,4 +1,4 @@
 # link-aggregator
 
 ## Example
-- [Hidari Shoya](http://darwishzain.github.io/la?u=hidarishoya)
+- [Hidari Shoya](http://darwishzain.github.io/la?@hidarishoya)

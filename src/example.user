@@ -1,0 +1,40 @@
+{
+    "name": "Your Full Name",
+    "username": "yourusername",
+    "icon": "",
+    "profile":"",
+    "bio":"Update links and socials",
+    "theme":"light",
+    "backgroundcolor": "linear-gradient(180deg, #000000 0%, #333333 100%)",
+    "links": {
+        "0": {
+            "name": "Link Display Name",
+            "img": "assets/default-icon.png",
+            "url": "https://github.com/darwishzain"
+        },
+        "1": {
+            "name": "Another Link",
+            "icon": "assets/default-icon.png",
+            "url": "https://github.com"
+        },
+        "2": {
+            "name": "Simple Link (No Image)",
+            "url": "https://simplelink.com"
+        }
+    },
+    "socials": {
+        "0":{
+            "name":"github",
+            "url":"https://github.com/darwishzain",
+            "icon":"bi bi-github"
+        },
+        "1":{
+            "name":"Daun",
+            "url":"https://daun.me/",
+            "icon":"bi bi-leaf-fill"
+        }
+    },
+    "products":{
+
+    }
+}

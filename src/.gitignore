@@ -1,3 +1,8 @@
 assets/*
-!assets/default-logo.png
+!assets/default-icon.png
+!assets/default-profile.png
 *.json
+!manifest.json
+!config.example.json
+*.user
+!example.user

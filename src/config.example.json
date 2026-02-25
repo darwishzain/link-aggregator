@@ -1,30 +1,10 @@
 {
-    "name": "Your Full Name",
-    "username": "yourusername",
-    "icon": "assets/default-logo.png",
-    "bio":"",
-    "profile":"",
-    "theme":"light",
-    "backgroundcolor": "linear-gradient(180deg, #000000 0%, #333333 100%)",
-    "links": {
-        "unique-link-key-1": {
-        "name": "Link Display Name",
-        "img": "assets/default-logo.png",
-        "url": "https://example.com"
-        },
-        "unique-link-key-2": {
-        "name": "Another Link",
-        "icon": "assets/default-logo.png",
-        "url": "https://another-link.com"
-        },
-        "unique-link-key-3": {
-        "name": "Simple Link (No Image)",
-        "url": "https://simplelink.com"
+    "users":{
+        "0": {
+            "label": "Example User",
+            "name": "exampleuser"
         }
     },
-    "socials": {
-        "PlatformName1": "https://platform1.com/yourusername",
-        "PlatformName2": "https://platform2.com/yourusername",
-        "PlatformName3": "https://platform3.com/yourusername"
-    }
+    "theme": "terminal"
+
 }

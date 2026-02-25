@@ -1,96 +1,171 @@
-config = 'config.json';
-async function init(){
+async function initpage(){
     const error = document.getElementById('error');
-    const links = document.getElementById('links');
-    const socials = document.getElementById('socials');
-    const profile = document.getElementById('profile');
-    const params = new URLSearchParams(window.location.search);
-    const username = params.get('u');
-    try{
-        const response = await fetch(`${username}.json`);
-        if(!response.ok)throw new Error('404 Profile Not Found');
-        const data = await response.json();
-        if(data !== "")
-        {
-            document.title = data.username;
-            document.body.className = `bg-${data.theme}`;
-            profile.classList.add(`la-${data.theme}`);
-            socials.className = `la-${data.theme}`
-            links.className = `la-${data.theme}`
-            if(data.icon && data.icon.trim !== ""){
+    const query = window.location.search;
+    if(query.startsWith('?@'))
+    {
+        username = query.slice(2);
+        try{
+            const userresponse = await fetch(`${username}.user`);
+            const userdata = await userresponse.json();
+            if(userdata !== "")
+            {
+                //* THEME
+                const activetheme = userdata.theme || 'default';
+                document.body.setAttribute('th-theme', activetheme);
                 let favicon = document.querySelector('link[rel="icon"]');
-                if (!favicon) {
-                    favicon = document.createElement('link');
-                    favicon.rel = 'icon';
-                    document.head.appendChild(favicon);
+                //* FAVICON
+                if(userdata.icon && userdata.icon.trim !== ""){
+                    favicon.href = userdata.icon;
                 }
-                favicon.href = data.icon;
-            }
-            if(data.profile && data.profile.trim !== ""){
+                else{
+                    favicon.href = 'assets/default-icon.png';
+                }
+                //* PROFILE
                 const profileimg = document.createElement('img');
-                profileimg.src = data.profile;
-                profile.appendChild(profileimg);
-            }
-            const username = document.createElement('p');
-            username.textContent = `@${data.username}`;
-            profile.appendChild(username);
-            const bio = document.createElement('p');
-            bio.className = 'bio';
-            bio.textContent = `${data.bio}`;
-            profile.appendChild(bio);
-            for (const [name, url] of Object.entries(data.socials)) {
-                const social = document.createElement('a');
-                label = name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                social.href = url;
-                social.target = '_blank';
-                social.title = label;
-                social.textContent = label;
-                social.className = 'la-btn la-social';
-                socials.appendChild(social);
-            }
-            for (const [key, value] of Object.entries(data.links)) {
-                const link = document.createElement('a');
-                link.href = value.url;
-                link.target = '_blank';
-                link.textContent = value.name;
-                link.className = 'la-btn la-link';
-                links.appendChild(link);
-            }
-            /*
-            for (const [key, value] of Object.entries(data.links)) {
-                const link = document.createElement('a');
-                link.href = value.url;
-                link.target = '_blank';
-                //link.textContent = value.name;
-                //link.style = 'display: flex;flex-direction: column;align-items: center;text-align: center;width: 100%;';
-                link.className = 'links';
-                if(value.img && value.img.trim() !== "") {
-                link.innerHTML = `<img src="${value.img}" alt="${value.name}" class="link-img" style="display: block;margin-bottom: 10px;height: 50vh;max-width: 100%;">`;
-                //const img = document.createElement('img');
-                //img.src = value.img;
-                //img.alt = value.name;
-                //img.className = 'link-img';
-                //img.style = 'display: block;margin-bottom: 10px;height: 50vh;width: auto;';
-                //link.appendChild(img);
+                if(userdata.profile && userdata.profile.trim !== ""){
+                    profileimg.src = userdata.profile;
                 }
-                const textspan = document.createElement('span');
-                textspan.style = 'text-decoration:none;';
-                if(value.icon && value.icon.trim() !== "") {
-                    textspan.innerHTML = '<img src="'+value.icon+'" alt="'+value.name+'" style="height:10vh;"> '+value.name;
+                else{
+                    profileimg.src = 'assets/default-profile.png';
                 }
-                else
-                {
-                    textspan.textContent = value.name;
+                profileimg.classList.add('rounded-circle');
+                document.getElementById('profile').appendChild(profileimg);
+                if(userdata.username && userdata.username.trim !== ""){
+                    document.title = '@'+userdata.username;
+                    const username = document.createElement('h3');
+                    username.textContent = '@'+userdata.username;
+                    document.getElementById('profile').appendChild(username);
                 }
-                link.appendChild(textspan);
-                links.appendChild(link);
-            }*/
+                if(userdata.bio && userdata.bio.trim !== ""){
+                    const bio = document.createElement('p');
+                    bio.classList.add('w-50','mx-auto','opacity-75');
+                    bio.textContent = `${userdata.bio}`;
+                    document.getElementById('profile').appendChild(bio);
+                }
+                document.getElementById('profile').classList.add('th-fg');
+                //* SOCIALS
+                for (const [id, social] of Object.entries(userdata.socials)) {
+                    const socialelement = document.createElement('a');
+                    label = social.name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                    socialelement.href = social.url;
+                    socialelement.classList.add('th-fg');
+                    socialelement.target = '_blank';
+                    socialelement.title = label;
+                    if(social.icon && social.icon.trim() !== "") {
+                        const socialimg = document.createElement('i');
+                        socialimg.className = social.icon;
+                        socialelement.appendChild(socialimg);
+                    }
+                    else
+                    {
+                        socialelement.textContent = social.name;
+                    }
+                    document.getElementById('socials').appendChild(socialelement);
+                }
+                //* LINKS
+                for (const [id,link] of Object.entries(userdata.links)) {
+                    const linkelement = document.createElement('a');
+                    linkelement.href = link.url;
+                    linkelement.target = '_blank';
+                    linkelement.textContent = link.name;
+                    linkelement.classList.add('th-surface', 'th-accent-text', 'th-border');
+                    if(link.img && link.img.trim() !== "") {
+                        const linkimg = document.createElement('img');
+                        linkimg.src = link.img;
+                        linkimg.alt = link.name;
+                        linkimg.style = 'display: block;margin-bottom: 10px;height: 50vh;max-width: 100%;';
+                        linkelement.appendChild(linkimg);
+                    }
+                    document.getElementById('links').appendChild(linkelement);
+                }
+            }
         }
+        catch(err){
+            error.innerHTML = `User Data Not Found`;
+            document.title = `User Data Not Found`;
+            return;
+        }
+    }
+    else
+    {
+        error.innerHTML = `Invalid URL Format`;
+        document.title = `Invalid URL Format`;
+        return;
+    }
 
+}
+async function initedit(){
+    try{
+        const response = await fetch('config.json');
+        const config = await response.json();
+        const activetheme = config.theme || 'default';
+        document.body.setAttribute('th-theme', activetheme);
+
+        const query = window.location.search;
+        if(query.startsWith('?@'))
+        {
+            const username = query.slice(2);
+            const h2 = document.createElement('h2');
+            h2.textContent = `Editing @${username}`;
+            h2.classList.add('th-accent-text', 'text-center', 'mb-4');
+            document.getElementById('container').appendChild(h2);
+
+            try {
+                const response = await fetch(`${username}.user`);
+                const userdata = await response.json();
+                const profileditor = document.createElement('div');
+                profileditor.id = 'profileeditor';
+                profileditor.classList.add('mb-4','th-border','th-surface','p-3','rounded');
+                profileditor.innerHTML = `${JSON.stringify(userdata, null, 2)}`;
+                document.getElementById('container').appendChild(profileditor);
+            } catch (error) {
+                errormessage(`User Not Found`);
+            }
+        }
+        else
+        {
+            const h2 = document.createElement('h2');
+            h2.textContent = 'User List';
+            h2.classList.add('th-accent-text', 'text-center', 'mb-4');
+            document.getElementById('container').appendChild(h2);
+
+            userlist = document.createElement('div');
+            userlist.id = 'userlist';
+            document.getElementById('container').appendChild(userlist);
+            for (const [id, user] of Object.entries(config.users)) {
+                const userelement = document.createElement('a');
+                userelement.href = `edit.html?@${user.name}`;
+                userelement.textContent = user.label;
+                userelement.classList.add('th-surface', 'th-accent-text', 'th-border', 'd-block', 'text-center', 'p-2', 'mb-2','text-decoration-none');
+                document.getElementById('userlist').appendChild(userelement);
+            }
+        }
     }
     catch(err){
-        error.innerHTML = `${err.message}`;
-        document.title = `${err.message}`;
+        errormessage(`Config Not Found`);
+        return;
     }
 }
-init();
+function errormessage(message){
+    const error = document.getElementById('error');
+    error.innerHTML = message;
+    document.title = message;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    footertxt = `<footer class="th-bg th-fg py-3 mt-5">
+        <div class="container text-center">
+            <small>
+                © 2025 Darwish Zain Studio. All rights reserved. |
+                <a href="https://github.com/darwishzain/link-aggregator" class="text-decoration-none th-fg" target="_blank" rel="noopener noreferrer">
+                    View on GitHub
+                </a>|
+                <a href="https://opensource.org/licenses/MIT" class="text-decoration-none th-fg" target="_blank" rel="noopener noreferrer">
+                    MIT License
+                </a>
+            </small>
+        </div>
+    </footer>`;
+    const footer = document.createElement('footer');
+    footer.innerHTML = footertxt;
+    document.body.appendChild(footer);
+});
