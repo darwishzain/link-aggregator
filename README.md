@@ -12,9 +12,9 @@
 - Copy the contents of `export/` into your directory.
 ## Example
 #### [Hidari Shoya](https://darwishzain.github.io/hidarishoya/index.html?@hidarishoya) ( `"theme":"midnight"` )
-Profile
+##### Profile
 ![](graphics/example.profile.png)
-Links
+##### Links
 ![](graphics/example.links.png)
 
 ## To do
