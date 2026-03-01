@@ -1,40 +1,47 @@
 {
-    "name": "Your Full Name",
-    "username": "yourusername",
-    "icon": "",
-    "profile":"",
-    "bio":"Update links and socials",
+    "profile":{
+        "username":"linkaggrregator",
+        "name":"Link Aggregator",
+        "img":"assets/default-profile.png",
+        "bio":"Please update the *.user",
+        "icon": "assets/default-icon.png"
+    },
     "theme":"light",
-    "backgroundcolor": "linear-gradient(180deg, #000000 0%, #333333 100%)",
-    "links": {
-        "0": {
-            "name": "Link Display Name",
-            "img": "assets/default-icon.png",
-            "url": "https://github.com/darwishzain"
+    "order":["socials","featured","products","links"],
+    "sections":{
+        "socials": {
+            "0":{
+                "name":"github",
+                "url":"https://github.com/darwishzain",
+                "icon":"bi bi-github"
+            },
+            "1":{
+                "name":"Daun",
+                "url":"https://daun.me/hidarishoya",
+                "icon":"bi bi-leaf-fill"
+            }
         },
-        "1": {
-            "name": "Another Link",
-            "icon": "assets/default-icon.png",
-            "url": "https://github.com"
-        },
-        "2": {
-            "name": "Simple Link (No Image)",
-            "url": "https://simplelink.com"
-        }
-    },
-    "socials": {
-        "0":{
-            "name":"github",
-            "url":"https://github.com/darwishzain",
-            "icon":"bi bi-github"
-        },
-        "1":{
-            "name":"Daun",
-            "url":"https://daun.me/",
-            "icon":"bi bi-leaf-fill"
-        }
-    },
-    "products":{
+        "featured":{
 
+        },
+        "links": {
+            "0": {
+                "name": "Demo",
+                "img": "assets/default-icon.png",
+                "url": "https://darwishzain.github.io/hidarishoya/?@hidarishoya"
+            },
+            "1": {
+                "name": "Link Aggregator @ Github",
+                "icon": "assets/default-icon.png",
+                "url": "https://github.com/darwishzain/link-aggregator"
+            },
+            "2": {
+                "name": "Portfolio",
+                "url": "https://darwishzain.github.io"
+            }
+        },
+        "products":{
+
+        }
     }
 }
