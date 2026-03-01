@@ -14,6 +14,10 @@
 #### [Hidari Shoya](https://darwishzain.github.io/hidarishoya/index.html?@hidarishoya) ( `"theme":"midnight"` )
 ##### Profile
 ![](graphics/example.profile.png)
+##### Socials
+![](graphics/example.socials.png)
+##### Products
+![](graphics/example.products.png)
 ##### Links
 ![](graphics/example.links.png)
 
