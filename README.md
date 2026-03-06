@@ -1,4 +1,4 @@
-# link-aggregator
+# link-aggregator ([Demo](https://darwishzain.github.io/hidarishoya?@hidarishoya))
 `Working on a way to edit the user data with html and js`
 `Please use manual edit for the time being`
 ## Important
@@ -24,4 +24,4 @@
 ## To do
 - Functions to add new user configuration with placeholder informations.
 - Functions to edit existing user configurations and options to choose from items in `src/manifest.json`.
-- Functions to export pages for specific user.
+- Functions to export pages for specific user. Currently exports all users.
