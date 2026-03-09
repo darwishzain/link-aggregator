@@ -1,4 +1,4 @@
-# link-aggregator ([Demo](https://darwishzain.github.io/hidarishoya?@hidarishoya))
+# link-aggregator ([Demo](https://pautn.github.io/hidarishoya?#hidarishoya))
 `Working on a way to edit the user data with html and js`
 `Please use manual edit for the time being`
 ## Important
