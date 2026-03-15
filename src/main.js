@@ -77,7 +77,8 @@ async function initpage(){
     }
     else
     {
-        window.location.href = 'home.html';
+        //window.location.href = 'home.html';
+        window.location.href = 'index.html#example';
         return;
     }
 

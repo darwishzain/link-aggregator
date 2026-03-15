@@ -2,9 +2,7 @@
 rm -rf export
 mkdir export
 cp -r src/* export
-rm export/config.example.json
-rm export/edit.html
-rm export/manifest.json
+rm -r export/edit
 files=(export/*.user)
 
 if [ -e "${files[0]}" ]; then
