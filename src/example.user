@@ -28,20 +28,19 @@
             "0": {
                 "name": "Demo",
                 "img": "assets/default-icon.png",
-                "url": "https://darwishzain.github.io/hidarishoya/?@hidarishoya"
+                "url": "https://darwishzain.github.io/link-aggregator/src/#hidarishoya"
             },
             "1": {
                 "name": "Link Aggregator @ Github",
                 "icon": "assets/default-icon.png",
                 "url": "https://github.com/darwishzain/link-aggregator"
-            },
-            "2": {
-                "name": "Portfolio",
-                "url": "https://darwishzain.github.io"
             }
         },
         "products":{
 
         }
+    },
+    "analytics":{
+        
     }
 }

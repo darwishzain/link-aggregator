@@ -16,6 +16,60 @@
         <h1 class="th-fg text-center"><a href="edit.html" class="text-decoration-none">Edit Page</a></h1>
     </div>
     <script src="main.js"></script>
-    <script>initedit();</script>
+    <script>
+        initedit();
+        async function initedit(){
+            try{
+                const response = await fetch('config.json');
+                const config = await response.json();
+                const activetheme = config.theme || 'default';
+                document.body.setAttribute('th-theme', activetheme);
+
+                const query = window.location.search;
+                if(query.startsWith('#'))
+                {
+                    const username = query.slice(2);
+                    const h2 = document.createElement('h2');
+                    h2.textContent = `Editing @${username}`;
+                    h2.classList.add('th-accent-text', 'text-center', 'mb-4');
+                    document.getElementById('container').appendChild(h2);
+
+                    try {
+                        const response = await fetch(`${username}.user`);
+                        const userdata = await response.json();
+                        const profileditor = document.createElement('div');
+                        profileditor.id = 'profileeditor';
+                        profileditor.classList.add('mb-4','th-border','th-surface','p-3','rounded');
+                        profileditor.innerHTML = `${JSON.stringify(userdata, null, 2)}`;
+                        document.getElementById('container').appendChild(profileditor);
+                    } catch (error) {
+                        errormessage(`User Not Found`);
+                    }
+                }
+                else
+                {
+                    const h2 = document.createElement('h2');
+                    h2.textContent = 'User List';
+                    h2.classList.add('th-accent-text', 'text-center', 'mb-4');
+                    document.getElementById('container').appendChild(h2);
+
+                    userlist = document.createElement('div');
+                    userlist.id = 'userlist';
+                    document.getElementById('container').appendChild(userlist);
+                    for (const [id, user] of Object.entries(config.users)) {
+                        const userelement = document.createElement('a');
+                        userelement.href = `edit.html?@${user.name}`;
+                        userelement.textContent = user.label;
+                        userelement.classList.add('th-surface', 'th-accent-text', 'th-border', 'd-block', 'text-center', 'p-2', 'mb-2','text-decoration-none');
+                        document.getElementById('userlist').appendChild(userelement);
+                    }
+                }
+            }
+            catch(err){
+                errormessage(`Config Not Found`);
+                return;
+            }
+        }
+    </script>
 </body>
 </html>

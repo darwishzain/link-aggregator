@@ -15,10 +15,10 @@ if [ -e "${files[0]}" ]; then
     done
     if [ "$found_other" = true ]; then
         rm -f "export/example.user"
-        echo "Other .user files exist in export/. export/example.user has been deleted."
+        echo "User configuration found. Deleting example user configuration"
     else
-        echo "No other .user files found in export/. export/example.user was kept."
+        echo "Keep example user configuration."
     fi
 else
-    echo "No .user files found in export/ at all."
+    echo "No user configuration found."
 fi
